@@ -32,15 +32,15 @@ public class ArticuloController {
     }
 
     @DeleteMapping(value = "/eliminarPorSku/{sku}")
-    public ResponseEntity<?> removePorSku(@PathVariable(value = "sku") Integer sku){
+    public ResponseEntity<Boolean> removePorSku(@PathVariable(value = "sku") Integer sku){
         Optional<Articulo> removed =  articuloService.findById(sku);
 
         if(removed.isEmpty()){
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(false,HttpStatus.BAD_REQUEST);
         }
 
-        return articuloService.removeById(sku).map(item -> new ResponseEntity<>(HttpStatus.BAD_REQUEST))
-                .orElseGet(() -> new ResponseEntity<>(HttpStatus.OK));
+        return articuloService.removeById(sku).map(item -> new ResponseEntity<>(false, HttpStatus.BAD_REQUEST))
+                .orElseGet(() -> new ResponseEntity<>(true, HttpStatus.OK));
     }
 
     @PostMapping(value = "/guardarArticulo")
