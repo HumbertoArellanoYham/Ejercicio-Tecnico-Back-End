@@ -19,7 +19,8 @@ public class ConfigurationSettings {
                         .allowedMethods(HttpMethod.GET.name(),
                                 HttpMethod.POST.name(),
                                 HttpMethod.DELETE.name(),
-                                HttpMethod.PUT.name())
+                                HttpMethod.PUT.name(),
+                                HttpMethod.PATCH.name())
                         .allowedHeaders(HttpHeaders.CONTENT_TYPE,
                                 HttpHeaders.AUTHORIZATION, "*")
                         .allowCredentials(true);

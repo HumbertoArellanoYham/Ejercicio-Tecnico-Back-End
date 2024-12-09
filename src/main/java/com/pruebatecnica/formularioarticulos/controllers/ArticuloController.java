@@ -23,7 +23,7 @@ public class ArticuloController {
         Optional<Articulo> isFound = articuloService.findById(sku);
 
         return isFound.map((item) -> new ResponseEntity<>(item, HttpStatus.OK))
-                .orElseGet(() -> new ResponseEntity<>(HttpStatus.BAD_REQUEST));
+                .orElseGet(() -> null);
     }
 
     @GetMapping(value = "/obtenerTodosLosArticulos")
